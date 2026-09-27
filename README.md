@@ -7,3 +7,4 @@ Working through [The Rust Book](https://doc.rust-lang.org/book/), with short ADH
 2. [Ch 2 — The Guessing Game](02-guessing-game.md)
 3. [Ch 3.1 — Variables & Mutability](03-1-variables.md)
 4. [Ch 3.2 — Data Types](03-2-data-types.md)
+5. [Ch 3.3 — Functions](03-3-functions.md)
