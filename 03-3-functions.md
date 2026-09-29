@@ -104,6 +104,15 @@ plus_one(5)   // ❌ error: missing `fn` or `struct` for function or struct defi
 ```
 The top level of a file holds only **definitions** (`fn`, `struct`, `const`, …). Calls go inside `fn main()`, where the program starts. Ignore the "try `plus_one!(5)`" hint, because it isn't a macro.
 
+### ⚠️ Gotcha: `println!` needs a quoted template first
+```rust
+println!(x);        // ❌ error: format argument must be a string literal
+println!("x");      // prints the letter x
+println!("{x}");    // ✅ prints the value
+println!("{}", x);  // ✅ same, older style
+```
+`println!` is a **macro** (the `!`). It checks the template **at compile time**, so the first argument must be a string literal, not a variable.
+
 **Try it now:**
 ```rust
 fn plus_one(x: i32) -> i32 {
