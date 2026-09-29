@@ -96,4 +96,22 @@ The compiler tells you exactly what to fix.
 - [ ] The last expression with **no `;`** is the return value
 - [ ] "expected `i32`, found `()`" usually means you added a `;` you didn't need
 
-**Try it now:** write `fn plus_one(x: i32) -> i32 { x + 1 }` and print `plus_one(5)`. Then add a `;` after `x + 1` and read the error.
+### ⚠️ Gotcha I hit: code that runs must be inside `fn main()`
+```rust
+fn plus_one(x: i32) -> i32 { x + 1 }
+
+plus_one(5)   // ❌ error: missing `fn` or `struct` for function or struct definition
+```
+The top level of a file holds only **definitions** (`fn`, `struct`, `const`, …). Calls go inside `fn main()`, where the program starts. Ignore the "try `plus_one!(5)`" hint, because it isn't a macro.
+
+**Try it now:**
+```rust
+fn plus_one(x: i32) -> i32 {
+    x + 1
+}
+
+fn main() {
+    println!("{}", plus_one(5)); // 6
+}
+```
+Run `rustc test.rs && ./test`. Then add a `;` after `x + 1` and read the error.
